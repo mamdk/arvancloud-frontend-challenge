@@ -1,0 +1,40 @@
+{
+  "name": "arvancloud-frontend-challenge",
+  "version": "0.0.1",
+  "description": "Arvancloud Frontend Challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview",
+    "lint": "eslint ./custom-entry --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write ./custom-entry/**/*.{js,jsx,ts,tsx}"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamdk/arvancloud-frontend-challenge.git"
+  },
+  "author": "mhmk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamdk/arvancloud-frontend-challenge/issues"
+  },
+  "homepage": "https://github.com/mamdk/arvancloud-frontend-challenge#readme",
+  "devDependencies": {
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-helmet": "^6.1.11",
+    "sass-embedded": "^1.89.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-helmet": "^6.1.0",
+    "react-query": "^3.39.3",
+    "react-router": "^7.6.0",
+    "react-router-dom": "^7.6.0",
+    "vite": "^6.3.5"
+  }
+}

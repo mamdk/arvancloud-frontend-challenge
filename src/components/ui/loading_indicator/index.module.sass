@@ -1,0 +1,44 @@
+.loadingIndicator
+	width: 25px
+	height: 25px
+
+	circle
+		transform-origin: 50% 50%
+		transform: rotateZ(-90deg)
+
+	&.shouldRotate
+		animation: loadingAnimation 2s linear infinite
+
+.loadingPage
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	color: $gray-color
+
+	&.fillPage
+		height: 100vh
+
+	&.fitPage
+		flex-grow: 1
+
+	&.fullPage
+		position: fixed
+		height: 100vh
+		width: 100vw
+		top: 0
+		left: 0
+		z-index: 10
+
+		p
+			margin-top: 2rem
+
+@keyframes loadingAnimation
+	0%
+		stroke-dasharray: 0 0 0 var(--perimeter)
+
+	50%
+		stroke-dasharray: 0 0 var(--perimeter) var(--perimeter)
+
+	100%
+		stroke-dasharray: 0 var(--perimeter) 0 var(--perimeter)

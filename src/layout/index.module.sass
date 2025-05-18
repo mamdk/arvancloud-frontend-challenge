@@ -1,0 +1,42 @@
+@use "resets"
+@use "fonts"
+
+html
+	height: 100%
+	font-size: 62.5%
+
+	&[dir=rtl]
+		:global(.nofanum)
+			font-family: iranSans, emoji ,sans-serif !important
+
+			*
+				font-family: iranSansfa, emoji , sans-serif !important
+
+	&[dir=ltr]
+		body
+			direction: ltr
+			font-family: Poppins, emoji, sans-serif
+
+body
+	min-height: 100%
+	margin: 0
+	display: flex
+	flex-direction: column
+	font-size: 1.6rem
+	line-height: 1.5
+	background-color: $gray-color
+	font-family: iranSansfa, emoji, sans-serif
+	direction: rtl
+
+:global(#root)
+	display: flex
+	flex-direction: column
+	flex-grow: 1
+	align-items: stretch
+
+.layout
+	display: flex
+	flex-grow: 1
+
+	> main
+		flex-grow: 1

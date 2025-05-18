@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Miscellaneous
+.DS_Store
+.idea
+public
+
+# Build
+build
+coverage
+
+src/lib
