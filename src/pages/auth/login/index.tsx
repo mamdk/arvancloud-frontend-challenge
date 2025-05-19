@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'src/contexts/auth';
 import styles from './index.module.sass';
+import Link from 'src/components/ui/link';
 
 function LoginPage() {
 	const auth = useAuth();
