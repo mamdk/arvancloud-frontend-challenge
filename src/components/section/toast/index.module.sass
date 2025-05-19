@@ -1,0 +1,28 @@
+.toastSection
+	width: unset
+	height: unset
+	min-height: unset
+	padding: 1.2rem 1.6rem
+	border-radius: $radius-l
+	box-shadow: 0 0.8rem 4rem #2533433D
+
+	&.success
+		background-color: rgba($success, 0.1)
+		color: $success
+		//color: $success
+
+	&.error
+		background-color: rgba($error, 0.1)
+		color: $error
+
+	.toast
+		display: flex
+		justify-content: flex-start
+		align-items: center
+
+		>*
+			padding: 0
+			margin: 0
+
+		p
+			margin-inline-start: 0.5rem
