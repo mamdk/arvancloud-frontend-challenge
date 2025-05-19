@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useAuth } from 'src/contexts/auth';
 import { useNavigate } from 'react-router';
 // import Sidebar from 'src/layout/panel/sections/sidebar';
-// import Header from 'src/layout/panel/sections/header';
+import Header from 'src/layout/panel/sections/header';
 
 function PanelLayout() {
 	const { user } = useAuth();
@@ -25,7 +25,7 @@ function PanelLayout() {
 				<>
 					{/* <Sidebar className={styles.sidebar} /> */}
 
-					{/* <Header className={styles.header} /> */}
+					<Header className={styles.header} />
 
 					<div className={styles.container}>
 						<Outlet />
