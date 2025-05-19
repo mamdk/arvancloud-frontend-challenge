@@ -6,9 +6,10 @@ type TToastProps = {
     type?: 'success' | 'error';
     title: string;
     description?: string;
+    className?: string;
 }
 
-function toast({type, title, description}: TToastProps) {
+function toast({type, title, description, className}: TToastProps) {
     toastGenerator(
         <div className={styles.toast}>
             <h4>{title}</h4>
@@ -18,7 +19,7 @@ function toast({type, title, description}: TToastProps) {
             autoClose: 5000,
             closeButton: false,
             hideProgressBar: true,
-            className: cls(styles.toastSection, type === 'success' ? styles.success : styles.error)
+            className: cls(styles.toastSection, type === 'success' ? styles.success : styles.error, className)
         }
     )
 }
