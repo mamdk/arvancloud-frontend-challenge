@@ -7,6 +7,7 @@ interface LoadingIndicatorProps {
 	progress?: any;
 	initialSize?: number;
 	strokeWidth?: number;
+	light?: boolean;
 	progressRenderer?: (progress) => string;
 }
 
@@ -17,6 +18,7 @@ function LoadingIndicator({
 	initialSize = 100,
 	strokeWidth = 10,
 	progressRenderer = null as any,
+	light = false,
 }: LoadingIndicatorProps) {
 	const hasProgress = progress !== null && progress !== undefined;
 	const outerSize = initialSize + strokeWidth;
@@ -31,6 +33,18 @@ function LoadingIndicator({
 			style={{ width: `${size}px`, height: `${size}px`, '--perimeter': `${perimeter}px` } as any}
 		>
 			<circle
+				className={cls(styles.circleBack, light && styles.light)}
+				cx={center}
+				cy={center}
+				r={initialSize / 2}
+				strokeWidth={strokeWidth}
+				strokeLinecap='round'
+				stroke='currentColor'
+				fill='none'
+				strokeDasharray={'0'}
+			/>
+			<circle
+				className={styles.circle}
 				cx={center}
 				cy={center}
 				r={initialSize / 2}

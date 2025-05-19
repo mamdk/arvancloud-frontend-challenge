@@ -1,0 +1,92 @@
+.button
+  cursor: pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 1.4rem
+  border: 0.1rem solid $gray5
+  transition: 0.3s ease-in-out all
+  background-color: unset
+  padding: $size-m $size-l
+  border-radius: $radius-m
+
+  svg
+    width: 1.8rem
+    height: 1.8rem
+
+  &.hasIcon
+    padding: calc($size-l - 0.25rem)
+
+    &.primary
+      fill: $gray10
+
+    &.secondary
+      fill: $gray3
+
+      &:hover
+        fill: $gray2
+
+      &:active
+        fill: $gray1
+
+    &.disabled
+      fill: $gray5
+
+    &.loading
+      padding: $size-s
+
+
+  &.secondary, &.loading
+    color: $gray2
+
+    &:hover
+      border-color: rgba($gray2, 0.5)
+
+    &:active
+      border-color: rgba($gray2, 0.9)
+
+    &.disabled
+      border-color: $gray5
+      color: $gray5
+
+  &.primary
+    color: $gray10
+
+    &.success, &.loading
+      background-color: $green
+      border-color: $green
+
+      &:hover
+        border-color: $green-dark
+        background-color: $green-dark
+
+      &:active
+        border-color: $green-darker
+        background-color: $green-darker
+
+      &.disabled
+        border-color: $green-light
+        background-color: $green-light
+
+    &.error
+      background-color: $danger
+      border-color: $danger
+
+      &:hover
+        border-color: $danger-dark
+        background-color: $danger-dark
+
+      &:active
+        border-color: $danger-darker
+        background-color: $danger-darker
+
+      &.disabled
+        border-color: $danger-light
+        background-color: $danger-light
+
+  &.disabled
+    cursor: auto
+
+  &.loading
+    user-select: none
+    pointer-events: none
