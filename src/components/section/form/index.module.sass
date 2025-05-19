@@ -1,0 +1,46 @@
+.form
+	display: flex
+	flex-direction: column
+	background-color: $gray10
+	border-radius: $radius-s
+	min-width: 48rem
+
+	header
+		display: flex
+		justify-content: flex-start
+		align-items: center
+		height: 10rem
+		border-bottom: 2px solid $gray6
+		padding: 3rem
+
+		h3
+			font-size: 1.8rem
+			color: $gray2
+
+			font-weight: 500
+
+	.fields
+		padding: 2rem 3rem
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items: flex-start
+
+		>*:not(:last-child)
+			margin-bottom: $size-l
+
+	footer
+		padding: 0 3rem 3rem
+		display: flex
+		justify-content: flex-start
+		align-items: center
+
+@media only screen and (max-width: 560px)
+	.form
+		min-width: 36rem
+
+@media only screen and (max-width: 420px)
+	.form
+		min-width: unset
+		width: 100%
+		margin: 0 1.5rem
