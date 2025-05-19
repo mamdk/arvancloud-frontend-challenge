@@ -1,0 +1,32 @@
+.fieldSection
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: flex-start
+  gap: 1rem
+
+  &.fullWidth
+    width: 100%
+
+  .label
+    font-size: 1.4rem
+    color: $gray2
+
+    span
+      color: $error
+
+  .replaceMe
+    width: 100%
+    padding: 1rem
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: rgba($green, 0.1)
+    color: $green
+
+  .message
+    font-size: 1.2rem
+    color: $gray3
+
+    &.error
+      color: $error
