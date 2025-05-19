@@ -7,6 +7,7 @@ interface TButtonProps {
 	disabled?: boolean;
 	loading?: boolean;
 	hasIcon?: boolean;
+	fullWidth?: boolean;
 	variant?: 'primary' | 'secondary';
 	color?: 'success' | 'error';
 	type?: 'button' | 'submit' | 'reset';
@@ -19,6 +20,7 @@ export function Button({
 	disabled = false,
 	loading = false,
 	hasIcon = false,
+	fullWidth = false,
 	variant = 'primary',
 	color = 'success',
 	type = 'button',
@@ -40,7 +42,8 @@ export function Button({
 				variant === 'primary' ? styles.primary : styles.secondary,
 				color === 'success' ? styles.success : styles.error,
 				loading && styles.loading,
-				hasIcon && styles.hasIcon
+				hasIcon && styles.hasIcon,
+				fullWidth && styles.fullWidth
 			)}
 			onClick={handleButtonClick}
 		>

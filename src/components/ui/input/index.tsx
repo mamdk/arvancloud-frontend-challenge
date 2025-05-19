@@ -8,6 +8,7 @@ interface TInputProps {
 	size?: 'sm' | 'md' | 'lg';
 	disabled?: boolean;
 	readonly?: boolean;
+	fullWidth?: boolean;
 	error?: boolean;
 	placeholder?: string;
 	type?: 'text' | 'password' | 'email' | 'number';
@@ -21,6 +22,7 @@ export function Input({
 	size = 'md',
 	disabled = false,
 	readonly = false,
+	fullWidth = false,
 	type = 'text',
 	error = false,
 }: TInputProps) {
@@ -34,6 +36,7 @@ export function Input({
 				styles[size],
 				disabled && styles.disabled,
 				readonly && styles.readonly,
+				fullWidth && styles.fullWidth,
 				error && styles.error
 			)}
 			placeholder={placeholder}
