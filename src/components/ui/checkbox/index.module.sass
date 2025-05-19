@@ -1,0 +1,62 @@
+.checkboxSection
+  cursor: pointer
+  user-select: none
+  display: flex
+  justify-content: center
+  align-items: center
+  border: 0.2rem solid $gray3
+  width: 1.6rem
+  height: 1.6rem
+  border-radius: calc($radius-s - 0.1rem)
+  transition: 0.3s ease-in-out all
+
+  &:hover
+    border-color: rgba($gray2, 0.69)
+    background-color: rgba($gray5, 0.1)
+
+  &:active
+    border-color: rgba($gray2, 0.8)
+    background-color: rgba($gray5, 0.1)
+
+  &.disabled
+    border-color: $gray5
+
+    .checkbox
+      user-select: none
+      cursor: auto
+
+  &.checked, &.indeterminate
+    background-color: $green
+    border-color: $green
+
+    &:hover
+      border-color: $green-dark
+      background-color: $green-dark
+
+    &:active
+      border-color: $green-darker
+      background-color: $green-darker
+
+    &.disabled
+      border-color: $green-light
+      background-color: $green-light
+
+  &.checked
+    .checkmark
+      opacity: 1
+
+  &.indeterminate
+    .dash
+      opacity: 1
+
+  .checkbox
+    position: absolute
+    opacity: 0
+    cursor: pointer
+
+  .checkmark, .dash
+    width: 1rem
+    fill: $gray10
+    opacity: 0
+    position: absolute
+    transition: 0.3s ease-in-out opacity
