@@ -23,9 +23,9 @@ function PanelLayout() {
 		<main className={styles.panel}>
 			{user && (
 				<>
-					{/*<Sidebar className={styles.sidebar} />*/}
+					{/* <Sidebar className={styles.sidebar} /> */}
 
-					{/*<Header className={styles.header} />*/}
+					{/* <Header className={styles.header} /> */}
 
 					<div className={styles.container}>
 						<Outlet />

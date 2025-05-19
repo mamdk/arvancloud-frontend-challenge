@@ -20,14 +20,11 @@ function LoginPage() {
 
 	return (
 		<main className={styles.loginPage}>
-
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
 				}}
-			>
-
-			</form>
+			></form>
 		</main>
 	);
 }

@@ -1,13 +1,12 @@
 import styles from './index.module.sass';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import AuthLayout from "src/layout/auth";
-import AppRoutes from "src/routes";
-import {LoadingIndicatorPage} from "src/components/ui/loading_indicator";
-import PanelLayout from "src/layout/panel";
+import AuthLayout from 'src/layout/auth';
+import AppRoutes from 'src/routes';
+import { LoadingIndicatorPage } from 'src/components/ui/loading_indicator';
+import PanelLayout from 'src/layout/panel';
 import { ToastContainer } from 'react-toastify';
-
 
 import NotFoundAuthPage from 'src/pages/auth/404';
 import NotFoundPanelPage from 'src/pages/panel/404';
@@ -15,8 +14,8 @@ import NotFoundPanelPage from 'src/pages/panel/404';
 function Layout() {
 	const location = useLocation();
 
-	const [user] = useState(null)
-	const [userLoading] = useState(false)
+	const [user] = useState(null);
+	const [userLoading] = useState(false);
 
 	function generateRoutes(routes) {
 		const output: any[] = [];
@@ -55,7 +54,6 @@ function Layout() {
 
 		return output;
 	}
-
 
 	useEffect(() => {
 		window.scrollTo(0, 0);

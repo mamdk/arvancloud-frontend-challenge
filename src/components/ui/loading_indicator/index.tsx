@@ -64,7 +64,6 @@ export function LoadingIndicatorPage({
 	fillPage = false,
 	fitPage = false,
 }: any) {
-
 	return (
 		<div
 			className={cls(

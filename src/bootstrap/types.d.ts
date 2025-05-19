@@ -41,9 +41,7 @@ declare module '*.webp' {
 	export = Schema;
 }
 
-
 declare module '*.json' {
 	const Schema: Record<string, any>;
 	export = Schema;
 }
-
