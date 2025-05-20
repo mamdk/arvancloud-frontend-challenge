@@ -5,6 +5,7 @@ import styles from './index.module.sass';
 import Form from 'src/components/section/form';
 import Field from 'src/components/ui/field';
 import Input from 'src/components/ui/input';
+import Menu from 'src/components/ui/menu';
 
 function LoginPage() {
 	const auth = useAuth();
@@ -23,23 +24,23 @@ function LoginPage() {
 
 	return (
 		<main className={styles.loginPage}>
-			<Form
-				title={'Sign-up'}
-				action={{
-					title: 'sign-up',
-					handler: () => {
-						console.log('click');
-					},
-					fullWidth: true,
-				}}
-			>
-				<Field label={'Email'} fullWidth>
-					<Input name={'email'} placeholder={'Email'} fullWidth />
-				</Field>
-				<Field label={'Password'} fullWidth>
-					<Input type={'password'} name={'password'} placeholder={'Password'} fullWidth />
-				</Field>
-			</Form>
+			{/* <Form */}
+			{/*	title={'Sign-up'} */}
+			{/*	action={{ */}
+			{/*		title: 'sign-up', */}
+			{/*		handler: () => { */}
+			{/*			console.log('click'); */}
+			{/*		}, */}
+			{/*		fullWidth: true, */}
+			{/*	}} */}
+			{/* > */}
+			{/*	<Field label={'Email'} fullWidth> */}
+			{/*		<Input name={'email'} placeholder={'Email'} fullWidth /> */}
+			{/*	</Field> */}
+			{/*	<Field label={'Password'} fullWidth> */}
+			{/*		<Input type={'password'} name={'password'} placeholder={'Password'} fullWidth /> */}
+			{/*	</Field> */}
+			{/* </Form> */}
 		</main>
 	);
 }
