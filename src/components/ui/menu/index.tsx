@@ -8,6 +8,7 @@ type TItems = Array<{
 	link?: string;
 	handler?: () => void;
 	loading?: boolean;
+	active?: boolean;
 }>;
 
 interface TMenuProps {
@@ -20,7 +21,12 @@ export function Menu({ className, items = [] }: TMenuProps) {
 		<ul className={cls(styles.menu, className)}>
 			{items?.map((item) => (
 				<li
-					className={cls(styles.item, item.handler && styles.handler, item.loading && styles.loading)}
+					className={cls(
+						styles.item,
+						item.handler && styles.handler,
+						item.loading && styles.loading,
+						item.active && styles.active
+					)}
 					key={item.title}
 					onClick={item.handler}
 				>

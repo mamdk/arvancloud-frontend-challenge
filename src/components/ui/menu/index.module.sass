@@ -35,6 +35,19 @@
       .info
         display: none
 
+    &.active
+      background-color: rgba($green-light, 0.2)
+
+      span, .link
+        color: $green !important
+
+      &:hover
+        background-color: rgba($green-light, 0.3)
+
+        span, .link
+          color: $green-dark
+
+
     .info, .loadingWrapper
       display: flex
       justify-content: flex-start
