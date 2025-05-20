@@ -2,10 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'src/contexts/auth';
 import styles from './index.module.sass';
-import Form from 'src/components/section/form';
-import Field from 'src/components/ui/field';
-import Input from 'src/components/ui/input';
-import Menu from 'src/components/ui/menu';
 
 function LoginPage() {
 	const auth = useAuth();

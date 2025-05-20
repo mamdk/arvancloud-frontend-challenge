@@ -1,0 +1,75 @@
+.pagination
+  display: flex
+  justify-content: center
+  align-items: center
+  border: 1px solid $gray5
+  padding: $size-l
+  border-radius: $radius-m
+
+  >*:not(:last-child)
+    margin-inline-end: 1rem
+
+  &.disabled
+    button
+      color: $gray5
+      fill: $gray5
+
+      &.selected
+        background-color: $green-light
+
+
+  button
+    font-size: 1.6rem
+    width: 3.2rem
+    height: 3.2rem
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    transition: 0.3s ease-in-out background-color
+    background-color: unset
+    border: none
+    outline: none
+    border-radius: $radius-m
+    font-weight: 500
+
+    svg
+      width: 1.2rem
+      height: 1.2rem
+
+    &:hover
+      background-color: $gray6
+
+    &:active
+      background-color: rgba($gray5, 0.6)
+
+    &.selected
+      background-color: $green
+      color: $gray6
+
+    &.space
+      user-select: none
+      pointer-events: none
+
+    &.disabled
+      user-select: none
+      pointer-events: none
+      color: $gray5
+      fill: $gray5
+
+@media only screen and (max-width: 540px)
+  .pagination
+    padding: $size-m
+
+    >*:not(:last-child)
+      margin-inline-end: 0.5rem
+
+@media only screen and (max-width: 390px)
+  .pagination
+    padding: $size-s
+
+    >*:not(:last-child)
+      margin-inline-end: 0.2rem
+
+    button
+      font-size: 1.4rem
