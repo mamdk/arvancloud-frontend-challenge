@@ -1,10 +1,10 @@
-import LoginPage from 'src/pages/auth/login';
+import SignInPage from 'src/pages/auth/signIn';
+import SignUpPage from 'src/pages/auth/signUp';
 
-// TODO
 const AppRoutes = {
 	auth: [
-		{ path: 'sign-in', element: LoginPage },
-		{ path: 'sign-up', element: LoginPage },
+		{ path: 'login', element: SignInPage },
+		{ path: 'register', element: SignUpPage },
 	],
 	panel: [],
 };

@@ -4,8 +4,6 @@ const AuthContext = createContext(null as any);
 
 export function AuthProvider({ children }) {
 	const authState = useState({
-		refetch: null,
-		refetchKey: null,
 		user: null,
 		loading: true,
 	});
@@ -16,15 +14,9 @@ export function AuthProvider({ children }) {
 export function useAuth() {
 	const [auth, setAuth] = useContext(AuthContext);
 
-	function setRefetch(refetchMethod, refetchKey) {
-		setAuth((currentAuth) => ({
-			...currentAuth,
-			refetch: refetchMethod,
-			refetchKey,
-		}));
-	}
-
 	function login(user) {
+		localStorage.setItem('user_token', user.token);
+
 		setAuth((currentAuth) => ({
 			...currentAuth,
 			user,
@@ -39,41 +31,14 @@ export function useAuth() {
 				user: null,
 				loading: false,
 			}));
-		}
-	}
 
-	function refetch() {
-		if (auth.refetch instanceof Function) {
-			setAuth((currentAuth) => ({
-				...currentAuth,
-				loading: true,
-			}));
-
-			auth.refetch().then((res) => {
-				setAuth((currentAuth) => {
-					if (res?.data?.[currentAuth.refetchKey]) {
-						return {
-							...currentAuth,
-							user: res.data[currentAuth.refetchKey],
-							loading: false,
-						};
-					}
-
-					return {
-						...currentAuth,
-						loading: false,
-					};
-				});
-			});
+			localStorage.removeItem('user_token');
 		}
 	}
 
 	return {
 		user: auth.user,
 		loading: auth.loading,
-
-		setRefetch,
-		refetch,
 
 		login,
 		logout,

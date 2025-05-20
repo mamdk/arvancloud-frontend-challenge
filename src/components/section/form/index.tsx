@@ -1,7 +1,6 @@
 import styles from './index.module.sass';
 import cls from 'src/utils/class_names';
 import Button from 'src/components/ui/button';
-import Container from 'src/components/section/container';
 
 interface TFormProps {
 	className?: string;
@@ -9,14 +8,16 @@ interface TFormProps {
 	title: string;
 	action?: {
 		title: string;
-		handler: () => void;
+		handler?: () => void;
 		fullWidth?: boolean;
+		loading?: boolean;
 		type?: 'submit' | 'button';
 	} | null;
 	onSubmit?: (e) => void;
+	footer?: any;
 }
 
-function Form({ className, children, action = null, title, onSubmit }: TFormProps) {
+function Form({ className, children, action = null, title, onSubmit, footer = null }: TFormProps) {
 	return (
 		<form className={cls(styles.form, className)} onSubmit={onSubmit}>
 			<header>
@@ -24,12 +25,18 @@ function Form({ className, children, action = null, title, onSubmit }: TFormProp
 			</header>
 			<div className={cls(styles.fields)}>{children}</div>
 			{action && (
-				<footer>
-					<Button type={action.type || 'button'} onClick={action.handler} fullWidth={action.fullWidth}>
+				<footer className={cls(footer && styles.hasCustomFooter)}>
+					<Button
+						type={action.type || 'button'}
+						onClick={action.type === 'submit' ? onSubmit : action.handler}
+						fullWidth={action.fullWidth}
+						loading={action.loading}
+					>
 						{action.title}
 					</Button>
 				</footer>
 			)}
+			{footer && <div className={styles.customFooter}>{footer}</div>}
 		</form>
 	);
 }

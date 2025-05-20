@@ -4,20 +4,20 @@ import { useAuth } from 'src/contexts/auth';
 import { useNavigate } from 'react-router';
 // import Sidebar from 'src/layout/panel/sections/sidebar';
 import Header from 'src/layout/panel/sections/header';
+import { useEffect } from 'react';
 
 function PanelLayout() {
 	const { user } = useAuth();
 
 	const navigate = useNavigate();
 
-	// TODO
-	// useEffect(() => {
-	// 	const refreshToken = localStorage.getItem('refresh_token');
-	//
-	// 	if (!checkJWT(refreshToken)) {
-	// 		navigate('/auth/login');
-	// 	}
-	// }, []);
+	useEffect(() => {
+		const userToken = localStorage.getItem('user_token');
+
+		if (!userToken) {
+			void navigate('/auth/login');
+		}
+	}, []);
 
 	return (
 		<main className={styles.panel}>

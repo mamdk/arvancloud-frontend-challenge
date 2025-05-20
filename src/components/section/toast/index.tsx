@@ -10,6 +10,7 @@ interface TToastProps {
 }
 
 function toast({ type, title, description, className }: TToastProps) {
+	// TODO: responsive
 	toastGenerator(
 		<div className={styles.toast}>
 			<h4>{title}</h4>

@@ -27,13 +27,22 @@
 		align-items: flex-start
 
 		>*:not(:last-child)
-			margin-bottom: $size-l
+			margin-bottom: calc($size-l + 0.2rem)
 
 	footer
-		padding: 0 3rem 3rem
+		padding: 1rem 3rem 3rem
 		display: flex
 		justify-content: flex-start
 		align-items: center
+
+		&.hasCustomFooter
+			padding: 1rem 3rem
+
+	.customFooter
+		display: flex
+		justify-content: center
+		align-items: center
+		padding: 0 3rem 2rem
 
 @media only screen and (max-width: 560px)
 	.form
