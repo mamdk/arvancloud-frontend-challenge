@@ -1,7 +1,6 @@
 import styles from './index.module.sass';
 import cls from 'src/utils/class_names';
 import { Link as ReactLink } from 'react-router-dom';
-import { type ReactElement } from 'react';
 
 interface TLinkProps {
 	className?: string;

@@ -42,23 +42,9 @@ const List = ({ items, itemsCount, page, setPage, loading, columns, className, d
 							return (
 								<tr tabIndex={-1} key={`row-${index + 1}`}>
 									{columns.map(
-										(
-											{
-												title,
-												props,
-												padding,
-												align,
-												field,
-												mainTitle,
-												fanum = false,
-												styles: cellStyles = {},
-												value,
-												size,
-											},
-											columnIndex
-										) => (
+										({ title, props, align, field, mainTitle, styles: cellStyles = {}, value }, columnIndex) => (
 											<td
-												className={cls(props?.className, fanum && 'fanum', mainTitle && styles.mainTitle)}
+												className={cls(props?.className, mainTitle && styles.mainTitle)}
 												align={align}
 												key={`col-${columnIndex + 1}`}
 												style={{ ...cellStyles }}

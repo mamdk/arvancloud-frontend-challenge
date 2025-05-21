@@ -1,6 +1,5 @@
 import styles from './index.module.sass';
 import cls from 'src/utils/class_names';
-import { type ReactElement } from 'react';
 
 interface TFieldProps {
 	className?: string;

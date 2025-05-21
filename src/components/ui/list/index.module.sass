@@ -33,6 +33,11 @@
 				tr
 					td
 						padding: 1.5rem 0.5rem
+						text-align: start
+						vertical-align: top
+
+						&:first-child
+							padding: 2.5rem 0.5rem 1rem
 
 					&:hover
 						background-color: rgba($gray5, 0.5)
@@ -121,6 +126,7 @@
 						padding: 1rem 0 !important
 						height: fit-content
 
+
 						&:not(:last-child)
 							border-bottom: 1px solid $gray5 !important
 
@@ -137,6 +143,7 @@
 
 						&::before
 							color: $gray2
+							width: 8rem
 
 						&.mainTitle
 							order: 0

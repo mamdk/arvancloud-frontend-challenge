@@ -5,6 +5,10 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import Request from 'src/utils/request';
 import { useNavigate, useParams } from 'react-router';
+import Button from 'src/components/ui/button';
+import EllipsisSVG from 'src/assets/icons/ellipsis-light.svg';
+import Popover from 'src/components/ui/popover';
+import Menu from 'src/components/ui/menu';
 
 function ArticlesPage() {
 	const { page: urlPage } = useParams();
@@ -12,6 +16,7 @@ function ArticlesPage() {
 
 	const [page, setPage] = useState(parseInt(urlPage || '') || 1);
 	const [data, setData] = useState(null as any);
+	const [popover, setPopover] = useState(null as any);
 
 	const { isLoading } = useQuery(
 		'articles',
@@ -27,6 +32,10 @@ function ArticlesPage() {
 			},
 		}
 	);
+
+	const handlerDeleteArticle = (article) => {
+		console.log(article);
+	};
 
 	const columns = [
 		{
@@ -57,12 +66,34 @@ function ArticlesPage() {
 		{
 			field: 'createdAt',
 			title: 'Created',
+			value: (row) => <p>{row.createdAt}</p>,
 		},
 		{
-			// TODO: fix me
 			field: '',
 			title: '',
-			value: (row) => <span>actions</span>,
+			value: (row) => (
+				<Popover
+					position={'bottom'}
+					className={styles.popover}
+					trigger={
+						<Button variant={'secondary'} hasIcon>
+							<EllipsisSVG />
+						</Button>
+					}
+				>
+					<Menu
+						items={[
+							{ title: 'Edit', link: `/panel/articles/edit/${row.slug}` },
+							{
+								title: 'Delete',
+								handler: () => {
+									handlerDeleteArticle(row);
+								},
+							},
+						]}
+					/>
+				</Popover>
+			),
 		},
 	];
 
