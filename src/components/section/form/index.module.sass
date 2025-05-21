@@ -5,22 +5,7 @@
 	border-radius: $radius-s
 	min-width: 48rem
 
-	header
-		display: flex
-		justify-content: flex-start
-		align-items: center
-		height: 10rem
-		border-bottom: 2px solid $gray6
-		padding: 3rem
-
-		h3
-			font-size: 1.8rem
-			color: $gray2
-
-			font-weight: 500
-
 	.fields
-		padding: 2rem 3rem
 		display: flex
 		flex-direction: column
 		justify-content: flex-start
@@ -30,19 +15,19 @@
 			margin-bottom: calc($size-l + 0.2rem)
 
 	footer
-		padding: 1rem 3rem 3rem
+		padding: 2rem 0 0
 		display: flex
 		justify-content: flex-start
 		align-items: center
 
 		&.hasCustomFooter
-			padding: 1rem 3rem
+			padding: 3rem 0 0
 
 	.customFooter
 		display: flex
 		justify-content: center
 		align-items: center
-		padding: 0 3rem 2rem
+		padding: 1rem 3rem 0
 
 @media only screen and (max-width: 560px)
 	.form
