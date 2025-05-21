@@ -1,0 +1,47 @@
+.textarea
+  display: flex
+  border-radius: 0.8rem
+  outline: none
+  border: 1px solid $gray5
+  color: $gray2
+  font-size: 1.4rem
+  transition: 0.3s all ease-in-out
+  resize: none
+
+  &::placeholder
+    color: $gray5
+    font-size: 1.4rem
+
+  &:hover
+    color: $gray1
+    border-color: $gray4
+
+  &:active
+    color: $gray2
+    border-color: $green
+
+  &:disabled
+    background-color: unset
+
+  &.fullWidth
+    width: 100%
+    flex-grow: 1
+
+  &.readonly
+    border-color: $gray3
+    color: $gray2
+
+  &.disabled
+    color: $gray5
+    border-color: $gray5
+    user-select: none
+
+  &.error
+    border: 1px solid $error
+
+  &.lg
+    padding: $size-l
+  &.md
+    padding: $size-m
+  &.sm
+    padding: $size-s
