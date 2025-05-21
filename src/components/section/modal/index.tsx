@@ -4,6 +4,7 @@ import Container from 'src/components/section/container';
 import CircleCheckSVG from 'src/assets/icons/circle-check-light.svg';
 import TriangleExclamationSVG from 'src/assets/icons/triangle-exclamation-light.svg';
 import { useEffect, useState } from 'react';
+import Section from 'src/components/ui/section';
 
 interface TModalProps {
 	open?: boolean;
@@ -51,23 +52,20 @@ function Modal({
 				<div className={cls(styles.back)} onClick={handleClose} />
 
 				<section className={cls(styles.modal, styles[size])}>
-					<header>
-						<h3>{title}</h3>
-						{description && <p>{description}</p>}
-					</header>
+					<Section title={title} description={description}>
+						{dialogueOptions ? (
+							<div className={cls(styles.dialogue)}>
+								<span className={cls(styles.icon, styles[dialogueOptions.type])}>
+									{dialogueOptions.type === 'success' ? <CircleCheckSVG /> : <TriangleExclamationSVG />}
+								</span>
+								<p className={cls(styles.message)}>{dialogueOptions.message}</p>
+							</div>
+						) : (
+							children
+						)}
 
-					{dialogueOptions ? (
-						<div className={cls(styles.dialogue)}>
-							<span className={cls(styles.icon, styles[dialogueOptions.type])}>
-								{dialogueOptions.type === 'success' ? <CircleCheckSVG /> : <TriangleExclamationSVG />}
-							</span>
-							<p className={cls(styles.message)}>{dialogueOptions.message}</p>
-						</div>
-					) : (
-						children
-					)}
-
-					{actions && <footer>{actions}</footer>}
+						{actions && <footer>{actions}</footer>}
+					</Section>
 				</section>
 			</Container>
 		</main>

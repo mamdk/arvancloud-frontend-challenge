@@ -28,9 +28,7 @@ function PanelLayout() {
 
 					<Header className={styles.header} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
 
-					<div className={styles.container}>
-						<Outlet />
-					</div>
+					<Outlet />
 				</>
 			)}
 		</main>

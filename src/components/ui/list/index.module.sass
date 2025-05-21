@@ -1,0 +1,167 @@
+.list
+	display: flex
+	flex-direction: column
+	background-color: $gray13
+	padding: 2rem
+	border-radius: 1rem
+
+	.contents
+		margin: 1.6rem 0
+		border: 2px solid $gray11
+		border-radius: 1.2rem
+		overflow: hidden
+		display: flex
+		flex-direction: column
+
+		table
+			thead
+				background-color: $gray11
+
+				th
+					font-size: 1.4rem
+					font-weight: 600
+					white-space: nowrap
+					color: $gray5
+					border-bottom: none
+
+			tbody
+				tr:hover
+					background-color: $gray12
+
+			tr
+				td:first-child, th:first-child
+					padding-inline-start: 1.6rem
+				td:last-child, th:last-child
+					padding-inline-end: 1.6rem
+
+				&:not(:last-child)
+					td
+						border-bottom: 2px solid $gray11
+
+			td
+				border-bottom: none
+
+			:global(.actions)
+				display: flex
+				align-items: center
+				justify-content: space-between
+				white-space: nowrap
+
+				a
+					display: flex
+
+					> *
+						flex: 1 0 0
+
+				> *:not(:last-child)
+					margin-inline-end: 0.8rem
+
+			:global(.idLabel)
+				font-size: 1.2rem
+				font-weight: 700
+				padding: 4px 12px
+				border-radius: .6rem
+				white-space: nowrap
+				color: $gray6
+				background-color: rgba($gray6, 0.15)
+
+	footer
+		display: flex
+		align-items: center
+		justify-content: center
+
+@media screen and (max-width: 1080px)
+	.list
+		background-color: unset
+		padding: 0
+
+		header
+			flex-direction: column
+			align-items: stretch
+
+			.actionsWrapper
+				flex-direction: column
+				align-items: stretch
+				margin-top: 1.6rem
+
+				.search
+					width: unset
+					margin-bottom: 1.2rem
+
+				.actions
+					margin-inline-start: 0
+
+					> *
+						flex: 1 0 0
+
+						&:not(:last-child)
+							margin-inline-end: 1.2rem
+
+		.contents
+			border: none
+			border-radius: 0
+
+			table
+				display: flex
+				flex-direction: column
+				border: none
+
+				thead
+					display: none
+
+				tbody
+					display: flex
+					flex-direction: column
+					border: none
+
+					> *:not(:last-child)
+						margin-bottom: 1.6rem
+
+				tr
+					display: flex
+					flex-direction: column
+					border: none
+					background-color: $gray13
+					border-radius: 1.2rem
+					padding: 1.6rem
+
+					td
+						display: flex
+						justify-content: space-between
+						align-items: center
+						width: unset
+						text-align: end
+						padding: 0 !important
+						border-bottom: none !important
+						height: 40px
+
+						&::before
+							color: $gray5
+
+						&.mainTitle
+							order: 0
+							font-size: 1.8rem
+
+							&::before
+								display: none
+
+						&:not(.mainTitle)
+							order: 1
+
+						&::before
+							content: attr(data-label)
+							text-align: start
+
+				:global(.actions)
+					flex-grow: 1 !important
+					justify-content: center
+					margin-top: 1.2rem
+
+					> *
+						flex-grow: 1
+
+						&:not(:last-child)
+							margin-inline-end: 1.2rem
+
+				:global(.statusLabel)
+					margin-inline-end: 0

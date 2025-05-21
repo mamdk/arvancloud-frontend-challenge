@@ -1,5 +1,6 @@
 import SignInPage from 'src/pages/auth/signIn';
 import SignUpPage from 'src/pages/auth/signUp';
+import ArticlesPage from 'src/pages/panel/articles';
 
 const AppRoutes = {
 	auth: [
@@ -7,8 +8,8 @@ const AppRoutes = {
 		{ path: 'register', element: SignUpPage },
 	],
 	panel: [
-		{ path: 'articles', element: SignInPage },
-		{ path: 'articles/page/:page', element: SignInPage },
+		{ path: 'articles', element: ArticlesPage },
+		{ path: 'articles/page/:page', element: ArticlesPage },
 	],
 };
 
