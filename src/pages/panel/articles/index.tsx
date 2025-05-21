@@ -14,7 +14,7 @@ function ArticlesPage() {
 	const [data, setData] = useState(null as any);
 
 	const { isLoading } = useQuery(
-		'All-Articles',
+		'articles',
 		new Request('/articles').get({
 			'Content-Type': 'application/json',
 			Authorization: `Token ${localStorage.getItem('user_token')}`,

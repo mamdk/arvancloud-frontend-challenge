@@ -30,6 +30,7 @@ function Form({ className, children, action = null, title, onSubmit, footer = nu
 							onClick={action.type === 'submit' ? onSubmit : action.handler}
 							fullWidth={action.fullWidth}
 							loading={action.loading}
+							disabled={action.loading}
 						>
 							{action.title}
 						</Button>

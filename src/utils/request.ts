@@ -17,12 +17,13 @@ class Request {
 		};
 	}
 
-	post() {
+	post(headers: Record<string, any>) {
 		return async (body: Record<string, any>) => {
 			const res = await fetch(this.url, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
+					...headers,
 				},
 				body: JSON.stringify(body),
 			});
