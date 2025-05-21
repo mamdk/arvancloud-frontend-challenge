@@ -1,6 +1,6 @@
 import styles from './index.module.sass';
 import { useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import Request from 'src/utils/request';
 import { useNavigate } from 'react-router';
 import Form from 'src/components/section/form';
@@ -8,6 +8,8 @@ import Field from 'src/components/ui/field';
 import Input from 'src/components/ui/input';
 import Textarea from 'src/components/ui/textarea';
 import toast from 'src/components/section/toast';
+import Checkbox from 'src/components/ui/checkbox';
+import LoadingIndicator from 'src/components/ui/loading_indicator';
 
 function ArticleCreatePage() {
 	const queryClient = useQueryClient();
@@ -15,16 +17,50 @@ function ArticleCreatePage() {
 
 	const [errors, setErrors] = useState({} as any);
 
+	const [newTag, setNewTag] = useState(null);
+	const [tagList, setTagList] = useState([] as string[]);
+	const [selectedTags, setSelectedTags] = useState([] as string[]);
+
 	const [data, setData] = useState({
 		title: '',
 		description: '',
 		body: '',
-		tags: [],
 	});
 
 	function setDataValue(obj) {
 		setData({ ...data, ...obj });
 	}
+
+	function handleKeyPress(e) {
+		if (e.key === 'Enter' && newTag) {
+			setTagList([newTag, ...tagList].sort());
+			setSelectedTags([newTag, ...selectedTags]);
+			setNewTag(null);
+		}
+	}
+	const handleChangeCheckbox = (tag, value) => {
+		if (value) {
+			setSelectedTags([...selectedTags, tag]);
+		} else {
+			setSelectedTags((currentList) => currentList.filter((t) => t !== tag));
+		}
+	};
+
+	const { isLoading: tagsLoading } = useQuery(
+		'tags',
+		new Request('/tags').get({
+			'Content-Type': 'application/json',
+			Authorization: `Token ${localStorage.getItem('user_token')}`,
+		}),
+		{
+			onSuccess: (data) => {
+				if (data.tags) {
+					const tags = data.tags.sort();
+					setTagList([...tagList, ...tags]);
+				}
+			},
+		}
+	);
 
 	const { mutate, isLoading } = useMutation(
 		new Request('/articles').post({
@@ -57,7 +93,7 @@ function ArticleCreatePage() {
 				className={styles.form}
 				title={'New article'}
 				onSubmit={() => {
-					mutate({ article: data });
+					mutate({ article: { ...data, tagList: selectedTags } });
 				}}
 				action={{
 					loading: isLoading,
@@ -96,7 +132,38 @@ function ArticleCreatePage() {
 				</Field>
 			</Form>
 
-			<section>tags</section>
+			<section className={styles.tagsSection}>
+				<Field label={'Tags'}>
+					<Input
+						value={newTag || ''}
+						placeholder={'New tag'}
+						onKeyPress={handleKeyPress}
+						onChange={(value) => {
+							setNewTag(value);
+						}}
+					/>
+				</Field>
+
+				{tagsLoading && tagList?.length === 0 && <LoadingIndicator className={styles.loadingTags} />}
+
+				{tagList?.length > 0 && (
+					<ul className={styles.list}>
+						{tagList.map((tag, index) => (
+							<li key={`tag-list-${tag}-${index}`}>
+								<label className={styles.item}>
+									<Checkbox
+										value={selectedTags.includes(tag)}
+										onChange={(value) => {
+											handleChangeCheckbox(tag, value);
+										}}
+									/>{' '}
+									<span>{tag}</span>
+								</label>
+							</li>
+						))}
+					</ul>
+				)}
+			</section>
 		</main>
 	);
 }

@@ -31,6 +31,7 @@ export function Input({
 	error = false,
 	onChange,
 	onInput,
+	...otherProps
 }: TInputProps) {
 	const handleChange = (e) => {
 		if (onChange instanceof Function) {
@@ -61,6 +62,7 @@ export function Input({
 			placeholder={placeholder}
 			name={name}
 			disabled={disabled || readonly}
+			{...otherProps}
 		/>
 	);
 }

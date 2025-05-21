@@ -13,6 +13,7 @@ interface TCheckboxProps {
 	indeterminate?: boolean;
 }
 
+// TODO: fix bug -> when scroll check stay
 export function Checkbox({ className, disabled, onChange, value, checked, indeterminate = false }: TCheckboxProps) {
 	const [isChecked, setIsChecked] = useState((indeterminate ? value : !!value) as any);
 

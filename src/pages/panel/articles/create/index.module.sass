@@ -4,8 +4,39 @@
   align-items: flex-start
 
   .form
-    flex-grow: 2
     margin-inline-end: 2rem
 
   .tagsSection
-    flex-grow: 1
+    display: flex
+    flex-direction: column
+    background-color: $gray10
+    padding: 2rem
+    border-radius: $radius-s
+
+    .loadingTags
+      margin: 2rem auto
+
+    .list
+      display: flex
+      flex-direction: column
+      border: 1px solid $gray6
+      border-radius: $radius-l
+      padding: 1rem
+      margin-top: 2rem
+      overflow-y: auto
+      max-height: 50vh
+
+      .item
+        margin: 0.1rem 0
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        cursor: pointer
+        padding: 0.5rem 1rem
+        border-radius: $radius-s
+
+        &:hover
+          background-color: $gray6
+
+        >*:not(:last-child)
+          margin-inline-end: 0.7rem
