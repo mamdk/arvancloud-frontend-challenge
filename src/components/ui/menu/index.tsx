@@ -14,11 +14,12 @@ type TItems = Array<{
 interface TMenuProps {
 	className?: string;
 	items?: TItems;
+	isSidebar?: boolean;
 }
 
-export function Menu({ className, items = [] }: TMenuProps) {
+export function Menu({ className, items = [], isSidebar }: TMenuProps) {
 	return (
-		<ul className={cls(styles.menu, className)}>
+		<ul className={cls(styles.menu, className, isSidebar && styles.sidebar)}>
 			{items?.map((item) => (
 				<li
 					className={cls(

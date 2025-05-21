@@ -6,7 +6,10 @@ const AppRoutes = {
 		{ path: 'login', element: SignInPage },
 		{ path: 'register', element: SignUpPage },
 	],
-	panel: [],
+	panel: [
+		{ path: 'articles', element: SignInPage },
+		{ path: 'articles/page/:page', element: SignInPage },
+	],
 };
 
 export default AppRoutes;
