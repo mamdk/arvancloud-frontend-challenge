@@ -7,3 +7,12 @@
   width: 240px
   margin-top: 63px
   padding: 1.5rem
+  transition: 0.3s all ease-in-out
+
+@media only screen and (max-width: 720px)
+  .sidebar
+    left: -100%
+    border-right: 1px solid $gray5
+
+    &.open
+      left: 0
