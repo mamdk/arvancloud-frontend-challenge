@@ -8,11 +8,20 @@ interface PopoverProps {
 	trigger: any;
 	position?: 'bottom' | 'top' | 'left' | 'right';
 	open?: boolean;
+	setOpen?: (state: boolean) => void;
 	closeOnOutsideClick?: boolean;
 }
 
-const Popover = ({ className, trigger, children, position = 'bottom', closeOnOutsideClick = true }: PopoverProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+const Popover = ({
+	className,
+	open,
+	setOpen,
+	trigger,
+	children,
+	position = 'bottom',
+	closeOnOutsideClick = true,
+}: PopoverProps) => {
+	const [isOpen, setIsOpen] = useState(open);
 	const popoverRef = useRef(null as any);
 	const [calculatedPosition, setCalculatedPosition] = useState(position);
 	const triggerRef = useRef(null as any);
@@ -55,6 +64,8 @@ const Popover = ({ className, trigger, children, position = 'bottom', closeOnOut
 
 		if (!closeOnOutsideClick || !isOpen) return;
 
+		setIsOpen(open);
+
 		const handleClickOutside = (event) => {
 			if (
 				popoverRef.current &&
@@ -63,6 +74,10 @@ const Popover = ({ className, trigger, children, position = 'bottom', closeOnOut
 				!triggerRef.current.contains(event.target)
 			) {
 				setIsOpen(false);
+
+				if (setOpen instanceof Function) {
+					setOpen(false);
+				}
 			}
 		};
 
@@ -71,7 +86,7 @@ const Popover = ({ className, trigger, children, position = 'bottom', closeOnOut
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
-	}, [isOpen, closeOnOutsideClick, position]);
+	}, [open, isOpen, closeOnOutsideClick, position]);
 
 	const getPositionStyle = () => {
 		if (!triggerRef.current) return {};
@@ -108,6 +123,10 @@ const Popover = ({ className, trigger, children, position = 'bottom', closeOnOut
 				ref={triggerRef}
 				onClick={() => {
 					setIsOpen(!isOpen);
+
+					if (setOpen instanceof Function) {
+						setOpen(!isOpen);
+					}
 				}}
 			>
 				{trigger}

@@ -52,7 +52,7 @@ function Modal({
 				<div className={cls(styles.back)} onClick={handleClose} />
 
 				<section className={cls(styles.modal, styles[size])}>
-					<Section title={title} description={description}>
+					<Section className={styles.section} title={title} description={description}>
 						{dialogueOptions ? (
 							<div className={cls(styles.dialogue)}>
 								<span className={cls(styles.icon, styles[dialogueOptions.type])}>

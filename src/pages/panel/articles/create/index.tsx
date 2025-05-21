@@ -32,7 +32,6 @@ function ArticleCreatePage() {
 		}),
 		{
 			onSuccess: (data) => {
-				console.log(data);
 				if (data.errors) {
 					setErrors(data.errors);
 					toast({ type: 'error', title: 'Create article failed', description: 'data is invalid' });

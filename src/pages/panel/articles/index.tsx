@@ -2,23 +2,27 @@ import styles from './index.module.sass';
 import Section from 'src/components/ui/section';
 import List from 'src/components/ui/list';
 import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import Request from 'src/utils/request';
 import { useNavigate, useParams } from 'react-router';
 import Button from 'src/components/ui/button';
 import EllipsisSVG from 'src/assets/icons/ellipsis-light.svg';
 import Popover from 'src/components/ui/popover';
 import Menu from 'src/components/ui/menu';
+import toast from 'src/components/section/toast';
+import Modal from 'src/components/section/modal';
 
 function ArticlesPage() {
+	const queryClient = useQueryClient();
 	const { page: urlPage } = useParams();
 	const navigate = useNavigate();
 
 	const [page, setPage] = useState(parseInt(urlPage || '') || 1);
 	const [data, setData] = useState(null as any);
-	const [popover, setPopover] = useState(null as any);
+	const [popoverOpen, setPopoverOpen] = useState(false);
+	const [deleteArticle, setDeleteArticle] = useState(null as any);
 
-	const { isLoading } = useQuery(
+	const { isLoading, refetch } = useQuery(
 		'articles',
 		new Request('/articles').get({
 			'Content-Type': 'application/json',
@@ -33,9 +37,27 @@ function ArticlesPage() {
 		}
 	);
 
-	const handlerDeleteArticle = (article) => {
-		console.log(article);
-	};
+	const { mutate: deleteMutate, isLoading: deletedLoading } = useMutation(
+		new Request(`/articles/{{slug}}`).delete({
+			Authorization: `Token ${localStorage.getItem('user_token')}`,
+		}),
+		{
+			onSuccess: (data) => {
+				if (data.status === 204) {
+					void queryClient.invalidateQueries('articles');
+					toast({ type: 'success', description: 'Article deleted successfully' });
+					void refetch();
+					setDeleteArticle(null);
+				} else {
+					toast({ type: 'error', title: 'Delete article failed' });
+				}
+			},
+			onError: (error) => {
+				console.error('delete article', error);
+				toast({ type: 'error', title: 'Delete article failed' });
+			},
+		}
+	);
 
 	const columns = [
 		{
@@ -73,6 +95,8 @@ function ArticlesPage() {
 			title: '',
 			value: (row) => (
 				<Popover
+					open={popoverOpen}
+					setOpen={setPopoverOpen}
 					position={'bottom'}
 					className={styles.popover}
 					trigger={
@@ -87,7 +111,8 @@ function ArticlesPage() {
 							{
 								title: 'Delete',
 								handler: () => {
-									handlerDeleteArticle(row);
+									setPopoverOpen(false);
+									setDeleteArticle(row);
 								},
 							},
 						]}
@@ -113,6 +138,33 @@ function ArticlesPage() {
 					columns={columns}
 				/>
 			</Section>
+
+			<Modal
+				open={deleteArticle}
+				title={'Delete Article'}
+				dialogueOptions={{ type: 'error', message: 'Are you sure you want to delete this article?' }}
+				actions={
+					<>
+						<Button
+							color={'error'}
+							onClick={() => {
+								deleteMutate(deleteArticle.slug);
+							}}
+							loading={deletedLoading}
+						>
+							Delete
+						</Button>
+						<Button
+							variant={'secondary'}
+							onClick={() => {
+								setDeleteArticle(null);
+							}}
+						>
+							Cancel
+						</Button>
+					</>
+				}
+			/>
 		</main>
 	);
 }

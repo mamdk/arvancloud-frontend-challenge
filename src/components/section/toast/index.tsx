@@ -4,7 +4,7 @@ import cls from 'src/utils/class_names';
 
 interface TToastProps {
 	type?: 'success' | 'error';
-	title: string;
+	title?: string;
 	description?: string;
 	className?: string;
 }
@@ -13,8 +13,8 @@ function toast({ type, title, description, className }: TToastProps) {
 	// TODO: responsive
 	toastGenerator(
 		<div className={styles.toast}>
-			<h4>{title}</h4>
-			<p>{description}</p>
+			{title && <h4>{title}</h4>}
+			{description && <p>{description}</p>}
 		</div>,
 		{
 			position: 'top-center',

@@ -31,6 +31,20 @@ class Request {
 			return await res.json();
 		};
 	}
+
+	delete(headers?: Record<string, any>) {
+		return async (slug: string) => {
+			const res = await fetch(this.url.replace(/\{\{slug\}\}/, slug), {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					...headers,
+				},
+			});
+
+			return res;
+		};
+	}
 }
 
 export default Request;
