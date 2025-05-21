@@ -1,6 +1,7 @@
 import styles from './index.module.sass';
 import cls from 'src/utils/class_names';
 import Button from 'src/components/ui/button';
+import HeaderSection from 'src/components/ui/header_section';
 
 interface TFormProps {
 	className?: string;
@@ -20,9 +21,7 @@ interface TFormProps {
 function Form({ className, children, action = null, title, onSubmit, footer = null }: TFormProps) {
 	return (
 		<form className={cls(styles.form, className)} onSubmit={onSubmit}>
-			<header>
-				<h3>{title}</h3>
-			</header>
+			<HeaderSection title={title} />
 			<div className={cls(styles.fields)}>{children}</div>
 			{action && (
 				<footer className={cls(footer && styles.hasCustomFooter)}>
