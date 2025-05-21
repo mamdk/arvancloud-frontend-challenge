@@ -35,7 +35,7 @@ function Pagination({ page, setPage, count, rowsPerPage, disabled, className = '
 				pageCount,
 			].filter(Boolean);
 		} else if (pageCount <= 5 && pageCount > 0) {
-			return new Array(5).fill(null).map((_, i) => i + 1);
+			return new Array(pageCount).fill(null).map((_, i) => i + 1);
 		}
 
 		return [];
