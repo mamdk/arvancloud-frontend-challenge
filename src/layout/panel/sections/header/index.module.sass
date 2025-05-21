@@ -1,22 +1,25 @@
 .header
   width: 100%
   display: flex
+  justify-content: space-between
+  align-items: center
   height: 6.4rem
   background-color: $gray10
   border-bottom: 1px solid $gray5
+  z-index: 1
+  padding: 0 2.5rem
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
 
-  .container
-    display: flex
-    justify-content: space-between
-    align-items: center
+  .welcome
+    font-size: 1.4rem
+    color: $gray2
 
-    .welcome
-      font-size: 1.4rem
-      color: $gray2
-
-    .middleText
-      background-color: rgba($gray5, 0.3)
-      padding: $size-m $size-l
+  .middleText
+    background-color: rgba($gray5, 0.3)
+    padding: $size-m $size-l
 
 @media only screen and (max-width: 490px)
   .header

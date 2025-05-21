@@ -11,21 +11,19 @@ function Header({ className }) {
 
 	return (
 		<header className={cls(styles.header, className)}>
-			<Container className={styles.container}>
-				<span className={styles.welcome}>
-					Welcome <b>{user.username}</b>
-				</span>
-				<p className={styles.middleText}>Arvancloud Challenge</p>
-				<Button
-					variant={'secondary'}
-					onClick={() => {
-						logout();
-						void navigate('/');
-					}}
-				>
-					Log out
-				</Button>
-			</Container>
+			<span className={styles.welcome}>
+				Welcome <b>{user.username}</b>
+			</span>
+			<p className={styles.middleText}>Arvancloud Challenge</p>
+			<Button
+				variant={'secondary'}
+				onClick={() => {
+					logout();
+					void navigate('/');
+				}}
+			>
+				Log out
+			</Button>
 		</header>
 	);
 }
