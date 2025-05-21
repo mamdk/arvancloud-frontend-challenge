@@ -30,7 +30,7 @@ const List = ({ items, itemsCount, page, setPage, loading, columns, className, d
 							{columns.map((column, index) => {
 								return (
 									<th key={`head-${index + 1}`} align={column.align} style={column.props?.style}>
-										{column.title}
+										<span>{column.title}</span>
 									</th>
 								);
 							})}

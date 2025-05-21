@@ -1,74 +1,60 @@
 .list
 	display: flex
 	flex-direction: column
-	background-color: $gray13
-	padding: 2rem
 	border-radius: 1rem
 
 	.contents
-		margin: 1.6rem 0
-		border: 2px solid $gray11
-		border-radius: 1.2rem
 		overflow: hidden
 		display: flex
 		flex-direction: column
 
 		table
 			thead
-				background-color: $gray11
+				background-color: $gray6
 
 				th
 					font-size: 1.4rem
 					font-weight: 600
 					white-space: nowrap
-					color: $gray5
+					color: $gray2
 					border-bottom: none
+					text-align: left
+
+					&:first-child
+						span
+							padding-left: 1.3rem
+
+					span
+						padding: 1.3rem 0
+						display: flex
+						align-items: center
 
 			tbody
-				tr:hover
-					background-color: $gray12
+				tr
+					td
+						padding: 1.5rem 0.5rem
+
+					&:hover
+						background-color: rgba($gray5, 0.5)
 
 			tr
 				td:first-child, th:first-child
-					padding-inline-start: 1.6rem
+					padding-inline-start: 0.4rem
 				td:last-child, th:last-child
-					padding-inline-end: 1.6rem
+					padding-inline-end: 0.4rem
 
 				&:not(:last-child)
 					td
-						border-bottom: 2px solid $gray11
+						border-bottom: 1px solid $gray6
 
 			td
 				border-bottom: none
-
-			:global(.actions)
-				display: flex
-				align-items: center
-				justify-content: space-between
-				white-space: nowrap
-
-				a
-					display: flex
-
-					> *
-						flex: 1 0 0
-
-				> *:not(:last-child)
-					margin-inline-end: 0.8rem
-
-			:global(.idLabel)
-				font-size: 1.2rem
-				font-weight: 700
-				padding: 4px 12px
-				border-radius: .6rem
-				white-space: nowrap
-				color: $gray6
-				background-color: rgba($gray6, 0.15)
 
 	footer
 		display: flex
 		align-items: center
 		justify-content: center
+
 
 @media screen and (max-width: 1080px)
 	.list
@@ -121,7 +107,7 @@
 					display: flex
 					flex-direction: column
 					border: none
-					background-color: $gray13
+					background-color: $gray6
 					border-radius: 1.2rem
 					padding: 1.6rem
 
@@ -131,12 +117,25 @@
 						align-items: center
 						width: unset
 						text-align: end
-						padding: 0 !important
-						border-bottom: none !important
-						height: 40px
+						padding: 1rem 0 !important
+						height: fit-content
+
+						&:not(:last-child)
+							border-bottom: 1px solid $gray5 !important
+
+						&:last-child
+							border-bottom: none !important
+							padding-bottom: 0 !important
+
+						&:first-child
+							padding-top: 0 !important
+
+						>*
+							width: 80%
+							line-height: 1.5
 
 						&::before
-							color: $gray5
+							color: $gray2
 
 						&.mainTitle
 							order: 0
