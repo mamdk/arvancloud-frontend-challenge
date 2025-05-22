@@ -17,14 +17,14 @@ function ArticlesPage() {
 	const { page: urlPage } = useParams();
 	const navigate = useNavigate();
 
-	const [page, setPage] = useState(parseInt(urlPage || '') || 1);
+	const [page, setPage] = useState(parseInt(urlPage || '0') || 1);
 	const [data, setData] = useState(null as any);
 	const [popoverOpen, setPopoverOpen] = useState(false);
 	const [deleteArticle, setDeleteArticle] = useState(null as any);
 
 	const { isLoading, isFetching, refetch } = useQuery(
 		'articles',
-		new Request('/articles').get({
+		new Request(`/articles${page > 1 ? `?page=${page}&rowPerPage=11` : ''}`).get({
 			'Content-Type': 'application/json',
 			Authorization: `Token ${localStorage.getItem('user_token')}`,
 		}),

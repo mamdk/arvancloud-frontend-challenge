@@ -74,7 +74,7 @@ const List = ({ items, itemsCount, page, setPage, loading, columns, className, d
 						page={page}
 						setPage={setPage}
 						rowsPerPage={RowsPerPage}
-						count={Math.ceil(itemsCount / RowsPerPage)}
+						count={itemsCount}
 					/>
 				)}
 			</footer>
