@@ -19,7 +19,7 @@ function Layout() {
 
 	const { user, login } = useAuth();
 
-	const { isLoading: userLoading } = useQuery(
+	const { isLoading: userLoading, isFetching: userFetching } = useQuery(
 		'user',
 		new Request('/user').get({
 			'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function Layout() {
 					)}
 				</Route>
 
-				{userLoading ? (
+				{userLoading || userFetching ? (
 					<Route path={'/panel/*'} element={<LoadingIndicatorPage fullPage />} />
 				) : (
 					<Route path={'/panel'} element={<PanelLayout />}>
@@ -98,7 +98,7 @@ function Layout() {
 				<Route path={'/'} element={<Navigate to={user ? '/panel' : '/auth/login'} replace />} />
 			</Routes>
 
-			<ToastContainer />
+			<ToastContainer className={styles.toastContainer} />
 		</div>
 	);
 }

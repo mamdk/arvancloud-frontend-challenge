@@ -22,7 +22,7 @@ function ArticlesPage() {
 	const [popoverOpen, setPopoverOpen] = useState(false);
 	const [deleteArticle, setDeleteArticle] = useState(null as any);
 
-	const { isLoading, refetch } = useQuery(
+	const { isLoading, isFetching, refetch } = useQuery(
 		'articles',
 		new Request('/articles').get({
 			'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ function ArticlesPage() {
 						setPage(newPage);
 						void navigate(`/panel/articles${newPage === 1 ? '' : `/page/${newPage}`}`);
 					}}
-					loading={isLoading}
+					loading={isLoading || isFetching}
 					items={data?.articles}
 					itemsCount={data?.articlesCount}
 					columns={columns}

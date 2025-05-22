@@ -10,7 +10,6 @@ interface TToastProps {
 }
 
 function toast({ type, title, description, className }: TToastProps) {
-	// TODO: responsive
 	toastGenerator(
 		<div className={styles.toast}>
 			{title && <h4>{title}</h4>}
@@ -18,7 +17,7 @@ function toast({ type, title, description, className }: TToastProps) {
 		</div>,
 		{
 			position: 'top-center',
-			autoClose: 5000,
+			autoClose: 3000,
 			closeButton: false,
 			hideProgressBar: true,
 			className: cls(styles.toastSection, type === 'success' ? styles.success : styles.error, className),

@@ -4,8 +4,9 @@ import toast from 'src/components/section/toast';
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
-			staleTime: 5 * 60 * 1000,
-			cacheTime: 30 * 60 * 1000,
+			refetchOnMount: 'always',
+			staleTime: 60 * 1000,
+			cacheTime: 60 * 1000,
 			retry: 2,
 			refetchOnWindowFocus: false,
 			onError: (error) => {

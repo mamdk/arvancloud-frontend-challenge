@@ -46,7 +46,7 @@ function ArticleCreatePage() {
 		}
 	};
 
-	const { isLoading: tagsLoading } = useQuery(
+	const { isLoading: tagsLoading, isFetching: tagsFetching } = useQuery(
 		'tags',
 		new Request('/tags').get({
 			'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ function ArticleCreatePage() {
 					toast({ type: 'error', title: 'Create article failed', description: 'data is invalid' });
 				} else if (data.article) {
 					void queryClient.invalidateQueries('articles');
-					setData({ title: '', description: '', body: '', tags: [] });
+					setData({ title: '', description: '', body: '' });
 					toast({ type: 'success', title: 'Well done!', description: 'Article created successfully' });
 					void navigate('/panel/articles');
 				} else {
@@ -133,10 +133,11 @@ function ArticleCreatePage() {
 			</Form>
 
 			<section className={styles.tagsSection}>
-				<Field label={'Tags'}>
+				<Field label={'Tags'} fullWidth>
 					<Input
 						value={newTag || ''}
 						placeholder={'New tag'}
+						fullWidth
 						onKeyPress={handleKeyPress}
 						onChange={(value) => {
 							setNewTag(value);
@@ -144,10 +145,11 @@ function ArticleCreatePage() {
 					/>
 				</Field>
 
-				{tagsLoading && tagList?.length === 0 && <LoadingIndicator className={styles.loadingTags} />}
+				{(tagsLoading || tagsFetching) && tagList?.length === 0 && <LoadingIndicator className={styles.loadingTags} />}
 
 				{tagList?.length > 0 && (
 					<ul className={styles.list}>
+						{/* TODO: fix overflow -> add many of them and see page */}
 						{tagList.map((tag, index) => (
 							<li key={`tag-list-${tag}-${index}`}>
 								<label className={styles.item}>
@@ -156,7 +158,7 @@ function ArticleCreatePage() {
 										onChange={(value) => {
 											handleChangeCheckbox(tag, value);
 										}}
-									/>{' '}
+									/>
 									<span>{tag}</span>
 								</label>
 							</li>

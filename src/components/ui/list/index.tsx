@@ -19,7 +19,7 @@ const RowsPerPage = 11;
 const List = ({ items, itemsCount, page, setPage, loading, columns, className, disablePagination }: ListProps) => {
 	const generateTable = () => {
 		if (!items?.length && loading) {
-			return <LoadingIndicator />;
+			return <LoadingIndicator className={styles.loading} />;
 		}
 
 		if (items?.length > 0) {
@@ -68,7 +68,7 @@ const List = ({ items, itemsCount, page, setPage, loading, columns, className, d
 			<div className={styles.contents}>{generateTable()}</div>
 
 			<footer>
-				{!disablePagination && (
+				{!disablePagination && !loading && (
 					<Pagination
 						className={styles.pagination}
 						page={page}
