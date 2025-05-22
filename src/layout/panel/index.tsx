@@ -1,12 +1,13 @@
 import styles from './index.module.sass';
 import { Outlet } from 'react-router-dom';
 import { useAuth } from 'src/contexts/auth';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Header from 'src/layout/panel/sections/header';
 import { useEffect, useState } from 'react';
 import Sidebar from 'src/layout/panel/sections/sidebar';
 
 function PanelLayout() {
+	const location = useLocation();
 	const navigate = useNavigate();
 	const { user } = useAuth();
 
@@ -17,6 +18,8 @@ function PanelLayout() {
 
 		if (!userToken) {
 			void navigate('/auth/login');
+		} else if (location.pathname === '/panel') {
+			void navigate('/panel/articles');
 		}
 	}, []);
 

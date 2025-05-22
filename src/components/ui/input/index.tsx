@@ -1,7 +1,5 @@
 import styles from './index.module.sass';
 import cls from 'src/utils/class_names';
-import { toast } from 'react-toastify';
-import onChange = toast.onChange;
 
 interface TInputProps {
 	name?: string;
