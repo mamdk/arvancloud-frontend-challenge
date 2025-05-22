@@ -33,7 +33,7 @@ function ArticleCreatePage() {
 
 	function handleKeyPress(e) {
 		if (e.key === 'Enter' && newTag) {
-			setTagList([newTag, ...tagList].sort());
+			setTagList([newTag, ...tagList]);
 			setSelectedTags([newTag, ...selectedTags]);
 			setNewTag(null);
 		}
@@ -56,7 +56,7 @@ function ArticleCreatePage() {
 			onSuccess: (data) => {
 				if (data.tags) {
 					const tags = data.tags.sort();
-					setTagList([...tagList, ...tags]);
+					setTagList([...new Set([...tagList, ...tags])].sort());
 				}
 			},
 		}
