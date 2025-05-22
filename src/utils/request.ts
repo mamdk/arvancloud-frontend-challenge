@@ -32,6 +32,21 @@ class Request {
 		};
 	}
 
+	put(headers: Record<string, any>) {
+		return async (body: Record<string, any>) => {
+			const res = await fetch(this.url, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					...headers,
+				},
+				body: JSON.stringify(body),
+			});
+
+			return await res.json();
+		};
+	}
+
 	delete(headers?: Record<string, any>) {
 		return async (slug: string) => {
 			const res = await fetch(this.url.replace(/\{\{slug\}\}/, slug), {

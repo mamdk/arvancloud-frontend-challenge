@@ -20,6 +20,7 @@ function Header({ className, openSidebar, setOpenSidebar }) {
 				)}
 				Welcome <b>{user.username}</b>
 			</span>
+			{/* TODO: not center */}
 			<p className={styles.middleText}>Arvancloud Challenge</p>
 			<Button
 				variant={'secondary'}
