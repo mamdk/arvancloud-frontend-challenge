@@ -5,7 +5,7 @@ import PanelNavLinks from 'src/data/panel/navlink';
 import { useLocation } from 'react-router';
 import { useMemo } from 'react';
 
-function Sidebar({ className, open }) {
+function Sidebar({ className, open, setOpenSidebar }) {
 	const location = useLocation();
 
 	const navLinks = useMemo(() => {
@@ -17,9 +17,12 @@ function Sidebar({ className, open }) {
 	}, [location.pathname]);
 
 	return (
-		<aside className={cls(styles.sidebar, className, open && styles.open)}>
-			<Menu items={navLinks} isSidebar />
-		</aside>
+		<>
+			<div className={cls(styles.backSidebar, open && styles.open)} onClick={() => setOpenSidebar(false)} />
+			<aside className={cls(styles.sidebar, className, open && styles.open)}>
+				<Menu items={navLinks} isSidebar />
+			</aside>
+		</>
 	);
 }
 

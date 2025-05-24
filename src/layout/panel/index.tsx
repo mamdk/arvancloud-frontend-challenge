@@ -27,7 +27,7 @@ function PanelLayout() {
 		<main className={styles.panel}>
 			{user && (
 				<>
-					<Sidebar className={styles.sidebar} open={openSidebar} />
+					<Sidebar className={styles.sidebar} open={openSidebar} setOpenSidebar={setOpenSidebar} />
 
 					<Header className={styles.header} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
 
