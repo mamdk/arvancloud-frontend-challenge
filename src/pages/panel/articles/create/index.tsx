@@ -149,7 +149,6 @@ function ArticleCreatePage() {
 
 				{tagList?.length > 0 && (
 					<ul className={styles.list}>
-						{/* TODO: fix overflow -> add many of them and see page */}
 						{tagList.map((tag, index) => (
 							<li key={`tag-list-${tag}-${index}`}>
 								<label className={styles.item}>

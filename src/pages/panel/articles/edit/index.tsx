@@ -1,6 +1,6 @@
 import styles from './index.module.sass';
 import { useState } from 'react';
-import { useMutation, useQueries, useQuery, useQueryClient } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import Request from 'src/utils/request';
 import { useNavigate, useParams } from 'react-router';
 import Form from 'src/components/section/form';
@@ -34,7 +34,7 @@ function ArticleEditPage() {
 
 	function handleKeyPress(e) {
 		if (e.key === 'Enter' && newTag) {
-			setTagList([...new Set([newTag, ...tagList])].sort());
+			setTagList([newTag, ...tagList].sort());
 			setSelectedTags((currentList) => [newTag, ...currentList]);
 			setNewTag(null);
 		}
@@ -56,6 +56,7 @@ function ArticleEditPage() {
 		{
 			onSuccess: (data) => {
 				if (data.tags) {
+					// eslint-disable-next-line @typescript-eslint/require-array-sort-compare
 					setTagList((currentList) => [...new Set([...currentList, ...data.tags])].sort());
 				}
 			},
@@ -79,6 +80,7 @@ function ArticleEditPage() {
 					setSelectedTags((currentList) => [...currentList, ...data.article.tagList]);
 
 					if (data.article.tagList.some((t) => !tagList.includes(t))) {
+						// eslint-disable-next-line @typescript-eslint/require-array-sort-compare
 						setTagList((currentList) => [...new Set([...currentList, ...data.article.tagList])].sort());
 					}
 				} else {
@@ -194,7 +196,6 @@ function ArticleEditPage() {
 
 				{tagList?.length > 0 && !tagsSectionLoading && (
 					<ul className={styles.list}>
-						{/* TODO: fix overflow -> add many of them and see page */}
 						{tagList.map((tag, index) => (
 							<li key={`tag-list-${tag}-${index}`}>
 								<label className={styles.item}>
