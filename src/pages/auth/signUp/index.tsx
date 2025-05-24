@@ -57,6 +57,7 @@ function SignUpPage() {
 					title: 'Sign up',
 					fullWidth: true,
 					loading: isLoading,
+					disabled: data.email === '' || data.username === '' || data.password === '',
 				}}
 				footer={
 					<div className={styles.message}>

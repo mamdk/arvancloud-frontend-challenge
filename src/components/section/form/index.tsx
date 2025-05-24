@@ -13,6 +13,7 @@ interface TFormProps {
 		handler?: () => void;
 		fullWidth?: boolean;
 		loading?: boolean;
+		disabled?: boolean;
 		type?: 'submit' | 'button';
 	} | null;
 	onSubmit?: (e) => void;
@@ -38,7 +39,7 @@ function Form({ className, children, action = null, title, onSubmit, footer = nu
 									onClick={action.type === 'submit' ? onSubmit : action.handler}
 									fullWidth={action.fullWidth}
 									loading={action.loading}
-									disabled={action.loading}
+									disabled={action.loading || action.disabled}
 								>
 									{action.title}
 								</Button>

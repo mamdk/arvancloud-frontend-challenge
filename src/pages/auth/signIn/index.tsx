@@ -43,6 +43,8 @@ function SignInPage() {
 		},
 	});
 
+	// TODO: helmet
+
 	return (
 		<main className={styles.signInPage}>
 			<Form
@@ -55,6 +57,7 @@ function SignInPage() {
 					title: 'Sign in',
 					fullWidth: true,
 					loading: isLoading,
+					disabled: data.email === '' || data.password === '',
 				}}
 				footer={
 					<div className={styles.message}>

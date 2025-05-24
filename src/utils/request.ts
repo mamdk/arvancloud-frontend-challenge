@@ -17,7 +17,7 @@ class Request {
 		};
 	}
 
-	post(headers: Record<string, any>) {
+	post(headers?: Record<string, any>) {
 		return async (body: Record<string, any>) => {
 			const res = await fetch(this.url, {
 				method: 'POST',
@@ -32,7 +32,7 @@ class Request {
 		};
 	}
 
-	put(headers: Record<string, any>) {
+	put(headers?: Record<string, any>) {
 		return async (body: Record<string, any>) => {
 			const res = await fetch(this.url, {
 				method: 'PUT',

@@ -99,6 +99,7 @@ function ArticleCreatePage() {
 					loading: isLoading,
 					title: 'Submit',
 					type: 'submit',
+					disabled: data.body === '' || data.title === '' || data.description === '',
 				}}
 			>
 				<Field label={'Title'} fullWidth error={errors?.title} message={errors?.title}>

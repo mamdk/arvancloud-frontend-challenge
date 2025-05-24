@@ -45,7 +45,8 @@ export function Button({
 				hasIcon && styles.hasIcon,
 				fullWidth && styles.fullWidth
 			)}
-			onClick={handleButtonClick}
+			onClick={disabled ? undefined : handleButtonClick}
+			disabled={disabled}
 		>
 			{loading ? <LoadingIndicator light={variant === 'secondary'} /> : children}
 		</button>
