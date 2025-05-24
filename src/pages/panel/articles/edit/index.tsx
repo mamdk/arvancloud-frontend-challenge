@@ -129,54 +129,45 @@ function ArticleEditPage() {
 				onSubmit={() => {
 					editMutate({ article: { ...data, tagList: selectedTags } });
 				}}
-				action={
-					articleLoading || articleFetching
-						? null
-						: {
-								loading: editLoading,
-								title: 'Submit',
-								type: 'submit',
-							}
-				}
+				action={{
+					loading: editLoading,
+					title: 'Submit',
+					type: 'submit',
+				}}
+				loading={articleLoading || articleFetching}
 			>
-				{articleLoading || articleFetching ? (
-					<LoadingIndicator className={styles.loading} />
-				) : (
-					<>
-						<Field label={'Title'} fullWidth error={errors?.title} message={errors?.title}>
-							<Input
-								value={data.title}
-								placeholder={'Title'}
-								fullWidth
-								error={errors?.title}
-								onChange={(val) => {
-									setDataValue({ title: val });
-								}}
-							/>
-						</Field>
-						<Field label={'Description'} fullWidth error={errors?.description} message={errors?.description}>
-							<Input
-								value={data.description}
-								placeholder={'Description'}
-								fullWidth
-								error={errors?.description}
-								onChange={(val) => {
-									setDataValue({ description: val });
-								}}
-							/>
-						</Field>
-						<Field label={'Body'} fullWidth error={errors?.body} message={errors?.body}>
-							<Textarea
-								value={data.body}
-								fullWidth
-								error={errors?.body}
-								onChange={(val) => {
-									setDataValue({ body: val });
-								}}
-							/>
-						</Field>
-					</>
-				)}
+				<Field label={'Title'} fullWidth error={errors?.title} message={errors?.title}>
+					<Input
+						value={data.title}
+						placeholder={'Title'}
+						fullWidth
+						error={errors?.title}
+						onChange={(val) => {
+							setDataValue({ title: val });
+						}}
+					/>
+				</Field>
+				<Field label={'Description'} fullWidth error={errors?.description} message={errors?.description}>
+					<Input
+						value={data.description}
+						placeholder={'Description'}
+						fullWidth
+						error={errors?.description}
+						onChange={(val) => {
+							setDataValue({ description: val });
+						}}
+					/>
+				</Field>
+				<Field label={'Body'} fullWidth error={errors?.body} message={errors?.body}>
+					<Textarea
+						value={data.body}
+						fullWidth
+						error={errors?.body}
+						onChange={(val) => {
+							setDataValue({ body: val });
+						}}
+					/>
+				</Field>
 			</Form>
 
 			<section className={styles.tagsSection}>
