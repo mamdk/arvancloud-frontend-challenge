@@ -9,6 +9,7 @@ import Link from 'src/components/ui/link';
 import { useMutation, useQueryClient } from 'react-query';
 import Request from 'src/utils/request';
 import toast from 'src/components/section/toast';
+import { Helmet } from 'react-helmet';
 
 function SignUpPage() {
 	const queryClient = useQueryClient();
@@ -47,6 +48,9 @@ function SignUpPage() {
 
 	return (
 		<main className={styles.signUpPage}>
+			<Helmet>
+				<title>Sign Up | Arvan Challenge</title>
+			</Helmet>
 			<Form
 				title={'Sign up'}
 				onSubmit={() => {

@@ -8,6 +8,7 @@ import Link from 'src/components/ui/link';
 import { useMutation, useQueryClient } from 'react-query';
 import Request from 'src/utils/request';
 import toast from 'src/components/section/toast';
+import { Helmet } from 'react-helmet';
 
 function SignInPage() {
 	const queryClient = useQueryClient();
@@ -43,10 +44,11 @@ function SignInPage() {
 		},
 	});
 
-	// TODO: helmet
-
 	return (
 		<main className={styles.signInPage}>
+			<Helmet>
+				<title>Sign in | Arvan Challenge</title>
+			</Helmet>
 			<Form
 				title={'Sign in'}
 				onSubmit={() => {

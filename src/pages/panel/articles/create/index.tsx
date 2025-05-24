@@ -10,6 +10,7 @@ import Textarea from 'src/components/ui/textarea';
 import toast from 'src/components/section/toast';
 import Checkbox from 'src/components/ui/checkbox';
 import LoadingIndicator from 'src/components/ui/loading_indicator';
+import { Helmet } from 'react-helmet';
 
 function ArticleCreatePage() {
 	const queryClient = useQueryClient();
@@ -89,6 +90,9 @@ function ArticleCreatePage() {
 
 	return (
 		<main className={styles.articleCreatePage}>
+			<Helmet>
+				<title>New Article | Arvan Challenge</title>
+			</Helmet>
 			<Form
 				className={styles.form}
 				title={'New article'}

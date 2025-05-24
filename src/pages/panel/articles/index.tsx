@@ -11,6 +11,7 @@ import Popover from 'src/components/ui/popover';
 import Menu from 'src/components/ui/menu';
 import toast from 'src/components/section/toast';
 import Modal from 'src/components/section/modal';
+import { Helmet } from 'react-helmet';
 
 function ArticlesPage() {
 	const queryClient = useQueryClient();
@@ -124,6 +125,9 @@ function ArticlesPage() {
 
 	return (
 		<main className={styles.articlesPage}>
+			<Helmet>
+				<title>Dashboard | Arvan Challenge</title>
+			</Helmet>
 			<Section title={'All Posts'}>
 				<List
 					className={styles.list}

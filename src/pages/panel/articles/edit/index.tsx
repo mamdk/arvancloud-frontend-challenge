@@ -10,6 +10,7 @@ import Textarea from 'src/components/ui/textarea';
 import toast from 'src/components/section/toast';
 import Checkbox from 'src/components/ui/checkbox';
 import LoadingIndicator from 'src/components/ui/loading_indicator';
+import { Helmet } from 'react-helmet';
 
 function ArticleEditPage() {
 	const queryClient = useQueryClient();
@@ -123,6 +124,9 @@ function ArticleEditPage() {
 
 	return (
 		<main className={styles.articleEditPage}>
+			<Helmet>
+				<title>Edit Article | Arvan Challenge</title>
+			</Helmet>
 			<Form
 				className={styles.form}
 				title={'Article'}
