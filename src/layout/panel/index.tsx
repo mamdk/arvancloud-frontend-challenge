@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router';
 import Header from 'src/layout/panel/sections/header';
 import { useEffect, useState } from 'react';
 import Sidebar from 'src/layout/panel/sections/sidebar';
+import { ToastContainer } from 'react-toastify';
 
 function PanelLayout() {
 	const location = useLocation();
@@ -34,6 +35,7 @@ function PanelLayout() {
 					<Outlet />
 				</>
 			)}
+			<ToastContainer className={styles.toastContainer} />
 		</main>
 	);
 }

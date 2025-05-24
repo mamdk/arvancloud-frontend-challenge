@@ -6,7 +6,6 @@ import AuthLayout from 'src/layout/auth';
 import AppRoutes from 'src/routes';
 import { LoadingIndicatorPage } from 'src/components/ui/loading_indicator';
 import PanelLayout from 'src/layout/panel';
-import { ToastContainer } from 'react-toastify';
 
 import NotFoundAuthPage from 'src/pages/auth/404';
 import NotFoundPanelPage from 'src/pages/panel/404';
@@ -97,8 +96,6 @@ function Layout() {
 
 				<Route path={'/'} element={<Navigate to={user ? '/panel' : '/auth/login'} replace />} />
 			</Routes>
-
-			<ToastContainer className={styles.toastContainer} />
 		</div>
 	);
 }
